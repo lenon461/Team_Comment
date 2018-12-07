@@ -1,6 +1,6 @@
-package new_account_manager_6;
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable{
 	
 	private String name = "";
 	private String id = "";
