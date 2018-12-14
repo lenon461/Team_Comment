@@ -5,6 +5,7 @@ public class User implements Serializable{
 	private String name = "";
 	private String id = "";
 	private String pw = "";
+	public Object getId;
 	
 	public User(String name, String id, String pw)
 	{
@@ -33,7 +34,13 @@ public class User implements Serializable{
 		String userInfo = "";
 		userInfo += "¿Ã∏ß : " + getName() + "\n";
 		userInfo += "ID : " + getId() + "\n";
+		userInfo += "PW : " + getPw() + "\n";
 		return userInfo;
+	}
+
+	public String[] split(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

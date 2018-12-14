@@ -6,18 +6,17 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class outputstream {
-
-	public void outputsave() {
+	ArrayList<String> Userinformation = new ArrayList<String>();
+	public void outputsave(String a, String b, String c) {
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
-		User us1 = new User("Á¤Á¾¹®", "a123", "b123");
-		User us2 = new User("ABC", "ID2", "pw23");
+		User us1 = new User(a, b, c);
+		
 		try {
 			
 			fos = new FileOutputStream("C:\\Users\\AcerBook\\eclipse-workspace\\BankTest\\Datafile\\object.dat");
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(us1);
-			oos.writeObject(us2);
 
 		} catch (Exception e) {
 
@@ -48,21 +47,27 @@ public class outputstream {
 	
 	try	{
 
-		fis = new FileInputStream("C:\\\\Users\\\\AcerBook\\\\eclipse-workspace\\\\BankTest\\\\Datafile\\\\object.dat");
+		fis = new FileInputStream("C:\\Users\\AcerBook\\eclipse-workspace\\BankTest\\Datafile\\object.dat");
 		ois = new ObjectInputStream(fis);
 //		System.out.println((User) ois.readObject());
 //		System.out.println((User) ois.readObject());
-		
+		for(int i=0; i<1; i++) {
 		String s = String.valueOf(ois.readObject());
-		String s3 = String.valueOf(ois.readObject());
 		
-		ArrayList<String> a = new ArrayList<String>();
+		Userinformation.add(s);
+		}
+		String nameB = Userinformation.get(0).split(":")[1];
+		String nameA = nameB.split("\n")[0];
 		
-		a.add(s);
-		a.add(s3);
-		String name = a.get(0).split(":")[1];
-		String name3 = name.split("\n")[0];
-		System.out.print(name3);
+		String IDB = Userinformation.get(0).split(":")[2];
+		String IDA = IDB.split("\n")[0];
+		
+		String PWB = Userinformation.get(0).split(":")[3];
+		
+		System.out.print(nameA);
+		System.out.print(IDA);
+		System.out.print(PWB);
+	
 	}
 	catch(Exception e)
 	{

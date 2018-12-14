@@ -1,18 +1,15 @@
-package new_account_manager_6;
 
 // SavingAccount.java
 // 저축예금 계좌를 모델한다
-
-import java.util.Scanner;
 
 public class Account {
 	
 	// 객체 변수
 	private int accountNumber;
-	private double balance;
+	private static double balance;
 	
 	// 클래스 변수
-	public static double interestRate = 0;
+	public static double interestRate = 0.1;
 	public static int numberOfAccounts = 0;
 	
 	// 생성자 메소드
@@ -57,8 +54,11 @@ public class Account {
 	// 객체 메소드: 객체 변수들의 값들을 문자열의 형태로 반환한다
 	public String toString()
 	{
+		float ac_num = (float) Math.random();
+		int ac_realnum = (int) (ac_num*100000000);
+		int realnum = ac_realnum;
 		String resultString = "";
-		resultString = resultString + "계좌번호 : " + getAccountNumber() + "\n";
+		resultString = resultString + "계좌번호 : " + realnum + "\n";
 		resultString = resultString + "잔고 : " + getBalance();
 		return resultString;
  	}
@@ -68,7 +68,9 @@ public class Account {
 	public static void setInterestRate(double newRate)
 	{
 		interestRate = newRate;
+		balance = balance * interestRate;	
 	}
+	
 	
 	// 객체 메소드: 계좌에 이자를 더한다
 	public void addInterest()
@@ -96,5 +98,6 @@ public class Account {
 		else
 			balance -= amount;
 	}
+
 	
 }
